@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello  my friend ! ✅</h1>
+    <ul>
+        <li>Отчет первый <code><a href="{{ path('order') }}">Отчет по заказам за выбранный период времени</a></code></li>
+        <li>Отчет второй <code><a href="{{ path('item') }}">Отчет по самым покупаемым товарам (Топ 100)</a></code></li>
+    </ul>
+</div>
+{% endblock %}

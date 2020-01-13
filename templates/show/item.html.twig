@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowController!{% endblock %}
+
+{% block body %}
+    {{ include('show/search_form/form.html.twig') }}
+        {% if error %}
+            {% for paramName, paramValue in error %}
+                <div>{{ paramValue }}</div>
+            {% endfor %}
+        {% else %}
+            <table border="1">
+                <caption>TOP 100</caption>
+                <tr>
+                    <th>Товар</th>
+                    <th>Номер заказа</th>
+                    <th>Сумма товара в заказе</th>
+                    <th>Дата</th>
+                </tr>
+                {% for paramName, paramValue in top_100_order_items %}
+                    <tr>
+                       {% if paramName==0%}
+                        <td>{{ paramValue['product_name'] }}</td>
+                           {% elseif paramValue['product_name'] != top_100_order_items[paramName-1]['product_name']%}
+                               <td>{{ paramValue['product_name'] }}</td>
+                           {% else %}
+                               <td>-</td>
+                       {% endif %}
+                        <td>{{ paramValue['order_customs'] }}</td>
+                        <td>{{ paramValue['sum'] }}</td>
+                        <td>{{ paramValue['date'] }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

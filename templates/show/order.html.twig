@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowController!{% endblock %}
+
+{% block body %}
+
+{{ include('show/search_form/form.html.twig') }}
+    {% if error %}
+        {% for paramName, paramValue in error %}
+            <div>{{ paramValue }}</div>
+        {% endfor %}
+    {% else %}
+        <table border="1">
+            <caption>Заказы</caption>
+            <tr>
+                <th>дата и время</th>
+                <th>номер заказа</th>
+                <th>сумма</th>
+                <th>товары ({имя товара}х{количество})</th>
+            </tr>
+            {% for paramName, paramValue in orders %}
+                <tr>
+                    <td>{{  paramValue.0.getCreateDatetime.format('Y-m-d h:m')  }}</td>
+                    <td>{{  paramValue.0.getNumber }}</td>
+                    <td>{{  paramValue.sum }}</td>
+                    <td> {% for Name, Value in paramValue.0.getOrderItems  %}
+                           <div>{{ Value.getProductName }} x
+                               {{ Value.getAmount }}</div>
+                        {% endfor %}
+                        </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

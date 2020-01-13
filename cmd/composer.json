@@ -1,0 +1,26 @@
+{
+    "name": "suncat/console-commands",
+    "description": "Console commands in PHP",
+    "authors": [
+        {
+            "name": "Nikolay Ivlev",
+            "email": "nikolay.kotovsky@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "suncat/symfony-console-extra": "1.0.*@dev",
+        "doctrine/orm": "2.4.x-dev",
+        "doctrine/collections": "v1.1",
+        "doctrine/dbal": "v2.4.0",
+        "symfony/yaml": "2.1.x-dev"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
