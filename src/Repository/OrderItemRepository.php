@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Order;
 use App\Entity\OrderItem;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\AST\Join;
 
 /**
  * @method OrderItem|null find($id, $lockMode = null, $lockVersion = null)
@@ -52,7 +54,7 @@ class OrderItemRepository extends ServiceEntityRepository
                 SELECT *
                 FROM order_items o_i
                 JOIN orders ON orders.number = o_i.order_customs
-                WHERE orders.create_datetime >= :date_from AND 		orders.create_datetime <= :date_to
+                WHERE orders.create_datetime >= :date_from AND orders.create_datetime <= :date_to
                 GROUP BY `product_name`
                 ORDER BY SUM(`amount`) DESC
                 LIMIT 100
